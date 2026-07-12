@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { LogOut, Upload, User, ImageIcon, Calendar, Phone, Edit3, X, Trash2, ZoomIn, Save, Camera, Heart } from 'lucide-react';
+import { LogOut, Upload, User, ImageIcon, Calendar, Phone, Edit3, X, Trash2, ZoomIn, Save, Camera } from 'lucide-react';
 
 const MOCK_IMAGES = [
   { id: 1, url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop', note: '去年春天在公园拍的，花开的很好', uploadTime: '2026-01-15 14:30' },
@@ -22,7 +22,7 @@ const MOCK_IMAGES = [
 const MOCK_ELDER_INFO = { name: '李秀英', age: 82, phone: '139****5678', emergencyContact: '李小明（儿子）138****9999', avatar: null };
 
 export default function ElderDashboard() {
-  const { userInfo, clearAuth } = useAuthStore();
+  const clearAuth = useAuthStore((state) => state.clearAuth);
   const navigate = useNavigate();
 
   const [elderInfo, setElderInfo] = useState(MOCK_ELDER_INFO);
